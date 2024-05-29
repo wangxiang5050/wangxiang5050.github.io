@@ -1,52 +1,14 @@
-<!--
- * @Description: 
- * @Author: zhouyi
- * @Date: 2024-05-28 14:57:01
- * @LastEditors: zhouyi
- * @LastEditTime: 2024-05-29 14:43:39
--->
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>测试摇一摇</title>
-</head>
-<body>
-<div class="phone">
-  <button onclick="getPermission()">请求授权</button>
-  <div id="show"></div>
-</div>
-</body>
-
-<script>
-function init () {
-      
-      navigator.vibrate =
-        navigator.vibrate ||
-        navigator.webkitVibrate ||
-        navigator.mozVibrate ||
-        navigator.msVibrate
-      if (window.DeviceMotionEvent) {
-        window.addEventListener('devicemotion', function(e){
-            // alert('摇动中')
-            document.getElementById("show").innerHTML = new Date() + "," + JSON.stringify(e)
-        }, false)
-      } else {
-        alert('不支持')
-      }
-      if (window.DeviceOrientationEvent) {
-        window.addEventListener(
-          'deviceorientation',
-          function(){
-            // alert('摇动中')
-            document.getElementById("show").innerHTML = new Date() + "," + JSON.stringify(e)
-          },
-          false
-        )
-      } else {
-        alert('不支持')
-      }
-    }
-    init()
-</script>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + Vue</title>
+    <script type="module" crossorigin src="/assets/index-DWrMsCHI.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-C80___Kf.css">
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
 </html>
