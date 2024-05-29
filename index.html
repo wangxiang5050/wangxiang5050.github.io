@@ -19,38 +19,34 @@
 </body>
 
 <script>
-function handleMotionEvent(event) {
-  document.getElementById('show').innerHTML = '摇动中' + new Date()
-}
-
-
-function startListen() {
-  if (window.DeviceMotionEvent) {
-    window.addEventListener("devicemotion", handleMotionEvent, false);
-  } else {
-    alert("该浏览器不支持摇一摇功能");
-  }
-}
-
-function getPermission() {
-  if (
-    typeof window.DeviceMotionEvent !== 'undefined' &&
-    typeof window.DeviceMotionEvent.requestPermission === 'function'
-  ) {
-    window.DeviceMotionEvent.requestPermission()
-      .then(function(state) {
-        if ('granted' === state) {
-          //用户同意授权
-          startListen()
-        } else {
-          //用户拒绝授权
-          alert('摇一摇需要授权设备运动权限,请重启应用后,再次进行授权!')
-        }
-      })
-      .catch(function(err) {
-        alert('error: ' + err)
-      })
-  }
-}
+function init () {
+      
+      navigator.vibrate =
+        navigator.vibrate ||
+        navigator.webkitVibrate ||
+        navigator.mozVibrate ||
+        navigator.msVibrate
+      if (window.DeviceMotionEvent) {
+        window.addEventListener('devicemotion', function(e){
+            // alert('摇动中')
+            document.getElementById("show").innerHTML = new Date() + "," + JSON.stringify(e)
+        }, false)
+      } else {
+        alert('不支持')
+      }
+      if (window.DeviceOrientationEvent) {
+        window.addEventListener(
+          'deviceorientation',
+          function(){
+            // alert('摇动中')
+            document.getElementById("show").innerHTML = new Date() + "," + JSON.stringify(e)
+          },
+          false
+        )
+      } else {
+        alert('不支持')
+      }
+    }
+    init()
 </script>
 </html>
